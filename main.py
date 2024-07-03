@@ -4,12 +4,12 @@ import time
 from pymongo import MongoClient
 
 # Replace these with your actual credentials
-api_id = 'YOUR_API_ID'
-api_hash = 'YOUR_API_HASH'
-bot_token = 'YOUR_BOT_TOKEN'
+api_id = '26930530'
+api_hash = 'b578cec1f4f5164d952c5a785a399a73'
+bot_token = '6578808008:AAGkU6YH7MA7Gl8Ss6Ox2Tf3ajTbjCzzZUQ'
 
 # MongoDB setup
-mongo_url = "YOUR_MONGODB_CONNECTION_STRING"
+mongo_url = "mongodb+srv://aio:aio@aio.5z4gxok.mongodb.net/?retryWrites=true&w=majority&appName=aio"
 client = MongoClient(mongo_url)
 db = client['telegram_bot']
 collection = db['user_settings']
