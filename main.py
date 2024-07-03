@@ -125,6 +125,10 @@ async def auto_forward(client, message):
     if not source_channel or not main_channel:
         return
 
+    # Check if the message is from the source channel
+    if message.chat.username != source_channel and str(message.chat.id) != source_channel:
+        return
+
     # Get the media caption
     caption = message.caption if message.caption else ""
 
@@ -133,10 +137,11 @@ async def auto_forward(client, message):
         caption = caption.replace(word, '')
 
     # Forward the media with the modified caption
-    await client.send_message(
+    await client.copy_message(
         chat_id=main_channel,
-        text=caption,
-        reply_to_message_id=message.message_id
+        from_chat_id=message.chat.id,
+        message_id=message.message_id,
+        caption=caption
     )
 
     # Add delay
